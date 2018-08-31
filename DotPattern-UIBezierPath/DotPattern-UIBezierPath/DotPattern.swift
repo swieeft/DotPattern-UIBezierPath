@@ -2,7 +2,7 @@
 //  DotPattern.swift
 //  DotPattern-UIBezierPath
 //
-//  Created by 박길남 on 2018. 8. 31..
+//  Created by swieeft on 2018. 8. 31..
 //  Copyright © 2018년 swieeft. All rights reserved.
 //
 import Foundation
