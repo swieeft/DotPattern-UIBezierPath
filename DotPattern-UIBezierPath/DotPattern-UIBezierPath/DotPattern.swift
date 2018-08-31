@@ -49,8 +49,8 @@ class DotPattern {
         let path = UIBezierPath()
         
         for point in dotPoints {
-            path.move(to: point.value)
-            path.addLine(to: CGPoint(x: point.value.x, y: point.value.y + 2))
+            path.m(to: point.value)
+                .line(to: CGPoint(x: point.value.x, y: point.value.y + 2))
         }
         
         view.layer.addSublayer(layer)
@@ -62,11 +62,10 @@ class DotPattern {
         for i in rowRange {
             for j in colRange {
                 let key = Dot(row: i, col: j)
-                let point = dotPoints[key]
                 
-                if point != nil {
-                    path.move(to: point!)
-                    path.addLine(to: CGPoint(x: point!.x, y: point!.y + 2))
+                if let point = dotPoints[key] {
+                    path.m(to: point)
+                        .line(to: CGPoint(x: point.x, y: point.y + 2))
                 }
             }
         }

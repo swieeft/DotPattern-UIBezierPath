@@ -11,6 +11,7 @@
 		24B287422138CC970062AE3A /* DotPattern_UIBezierPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287412138CC970062AE3A /* DotPattern_UIBezierPathTests.swift */; };
 		24B287442138CC970062AE3A /* DotPattern_UIBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 24B287362138CC970062AE3A /* DotPattern_UIBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24B2878A2138CEF10062AE3A /* DotPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287892138CEF10062AE3A /* DotPattern.swift */; };
+		24B2878C2138D9B70062AE3A /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2878B2138D9B70062AE3A /* UIBezierPathExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		24B287412138CC970062AE3A /* DotPattern_UIBezierPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPattern_UIBezierPathTests.swift; sourceTree = "<group>"; };
 		24B287432138CC970062AE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B287892138CEF10062AE3A /* DotPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPattern.swift; sourceTree = "<group>"; };
+		24B2878B2138D9B70062AE3A /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				24B287362138CC970062AE3A /* DotPattern_UIBezierPath.h */,
 				24B287372138CC970062AE3A /* Info.plist */,
 				24B287892138CEF10062AE3A /* DotPattern.swift */,
+				24B2878B2138D9B70062AE3A /* UIBezierPathExtension.swift */,
 			);
 			path = "DotPattern-UIBezierPath";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24B2878A2138CEF10062AE3A /* DotPattern.swift in Sources */,
+				24B2878C2138D9B70062AE3A /* UIBezierPathExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
