@@ -10,6 +10,7 @@
 		24B2873D2138CC970062AE3A /* DotPattern_UIBezierPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B287332138CC970062AE3A /* DotPattern_UIBezierPath.framework */; };
 		24B287422138CC970062AE3A /* DotPattern_UIBezierPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287412138CC970062AE3A /* DotPattern_UIBezierPathTests.swift */; };
 		24B287442138CC970062AE3A /* DotPattern_UIBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 24B287362138CC970062AE3A /* DotPattern_UIBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24B2878A2138CEF10062AE3A /* DotPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287892138CEF10062AE3A /* DotPattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		24B2873C2138CC970062AE3A /* DotPattern-UIBezierPathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DotPattern-UIBezierPathTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B287412138CC970062AE3A /* DotPattern_UIBezierPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPattern_UIBezierPathTests.swift; sourceTree = "<group>"; };
 		24B287432138CC970062AE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24B287892138CEF10062AE3A /* DotPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPattern.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				24B287362138CC970062AE3A /* DotPattern_UIBezierPath.h */,
 				24B287372138CC970062AE3A /* Info.plist */,
+				24B287892138CEF10062AE3A /* DotPattern.swift */,
 			);
 			path = "DotPattern-UIBezierPath";
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B2878A2138CEF10062AE3A /* DotPattern.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +353,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "DotPattern-UIBezierPath/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,6 +380,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "DotPattern-UIBezierPath/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +397,7 @@
 		24B2874B2138CC970062AE3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "DotPattern-UIBezierPathTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -408,6 +415,7 @@
 		24B2874C2138CC970062AE3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "DotPattern-UIBezierPathTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
