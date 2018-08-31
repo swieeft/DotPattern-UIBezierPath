@@ -1,3 +1,5 @@
+![Logo](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/Logo.png)
+
 DotPattern-UIBezierPath
 =======================
 
@@ -178,7 +180,7 @@ DotPattern-UIBezierPath
 >        // Dispose of any resources that can be recreated.
 >    }
 >}</code></pre>
-> ![Alt Text](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
+> ![HeartExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
 
 * * *
 
