@@ -18,6 +18,7 @@
 		24B287972138DC4A0062AE3A /* DotPattern_UIBezierPath.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24B287932138DC3A0062AE3A /* DotPattern_UIBezierPath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24B2879C2138E58E0062AE3A /* ViewDotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */; };
 		24B2879E2138FA940062AE3A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879D2138FA940062AE3A /* TabBarViewController.swift */; };
+		24B287A02138FFBF0062AE3A /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879F2138FFBF0062AE3A /* HeartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "DotPattern-UIBezierPath.xcodeproj"; path = "../DotPattern-UIBezierPath/DotPattern-UIBezierPath.xcodeproj"; sourceTree = "<group>"; };
 		24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDotViewController.swift; sourceTree = "<group>"; };
 		24B2879D2138FA940062AE3A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		24B2879F2138FFBF0062AE3A /* HeartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +149,9 @@
 				24B287602138CD5E0062AE3A /* Assets.xcassets */,
 				24B287622138CD5E0062AE3A /* LaunchScreen.storyboard */,
 				24B287652138CD5E0062AE3A /* Info.plist */,
-				24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */,
 				24B2879D2138FA940062AE3A /* TabBarViewController.swift */,
+				24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */,
+				24B2879F2138FFBF0062AE3A /* HeartViewController.swift */,
 			);
 			path = "DotPattern-UIBezierPath-Test";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				24B2879E2138FA940062AE3A /* TabBarViewController.swift in Sources */,
 				24B2879C2138E58E0062AE3A /* ViewDotViewController.swift in Sources */,
 				24B2875C2138CD5D0062AE3A /* ViewController.swift in Sources */,
+				24B287A02138FFBF0062AE3A /* HeartViewController.swift in Sources */,
 				24B2875A2138CD5D0062AE3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

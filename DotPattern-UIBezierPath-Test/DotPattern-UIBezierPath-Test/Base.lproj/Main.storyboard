@@ -27,17 +27,87 @@
             </objects>
             <point key="canvasLocation" x="1089" y="1312"/>
         </scene>
-        <!--Item 2-->
+        <!--HeartPath-->
         <scene sceneID="ikx-9m-Hb1">
             <objects>
-                <viewController id="9Sy-kV-iG4" sceneMemberID="viewController">
+                <viewController id="9Sy-kV-iG4" customClass="HeartViewController" customModule="DotPattern_UIBezierPath_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ak-CL-ReC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7G-VF-b7D">
+                                <rect key="frame" x="0.0" y="20" width="375" height="542.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFW-wX-yUN">
+                                <rect key="frame" x="0.0" y="563.5" width="375" height="54.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55k-g2-IFs">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="54.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jka-Lj-dG2">
+                                                <rect key="frame" x="62" y="12" width="62" height="30"/>
+                                                <state key="normal" title="View Dot"/>
+                                                <connections>
+                                                    <action selector="ViewDotAction:" destination="9Sy-kV-iG4" eventType="touchUpInside" id="DvG-kG-ujZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="jka-Lj-dG2" firstAttribute="centerX" secondItem="55k-g2-IFs" secondAttribute="centerX" id="Y3a-LD-MFm"/>
+                                            <constraint firstItem="jka-Lj-dG2" firstAttribute="centerY" secondItem="55k-g2-IFs" secondAttribute="centerY" id="hx7-Gd-4ue"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8d-l7-jWY">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="54.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSP-6c-DKj">
+                                                <rect key="frame" x="53.5" y="12" width="81" height="30"/>
+                                                <state key="normal" title="Show Heart"/>
+                                                <connections>
+                                                    <action selector="ShowHeartAction:" destination="9Sy-kV-iG4" eventType="touchUpInside" id="WTM-dI-Lr2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="vSP-6c-DKj" firstAttribute="centerY" secondItem="f8d-l7-jWY" secondAttribute="centerY" id="9hg-7z-wXx"/>
+                                            <constraint firstItem="vSP-6c-DKj" firstAttribute="centerX" secondItem="f8d-l7-jWY" secondAttribute="centerX" id="PiK-Ex-JzL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="f8d-l7-jWY" secondAttribute="bottom" id="2gV-V0-OTc"/>
+                                    <constraint firstItem="f8d-l7-jWY" firstAttribute="leading" secondItem="55k-g2-IFs" secondAttribute="trailing" id="7DW-cd-6ZD"/>
+                                    <constraint firstItem="55k-g2-IFs" firstAttribute="leading" secondItem="eFW-wX-yUN" secondAttribute="leading" id="BVG-hl-E8t"/>
+                                    <constraint firstAttribute="trailing" secondItem="f8d-l7-jWY" secondAttribute="trailing" id="Qel-nh-Ww9"/>
+                                    <constraint firstItem="55k-g2-IFs" firstAttribute="top" secondItem="eFW-wX-yUN" secondAttribute="top" id="RGp-Q9-vkM"/>
+                                    <constraint firstAttribute="bottom" secondItem="55k-g2-IFs" secondAttribute="bottom" id="ZjM-bo-dds"/>
+                                    <constraint firstItem="f8d-l7-jWY" firstAttribute="top" secondItem="eFW-wX-yUN" secondAttribute="top" id="jTB-4A-uZc"/>
+                                    <constraint firstItem="55k-g2-IFs" firstAttribute="width" secondItem="f8d-l7-jWY" secondAttribute="width" id="zq3-yi-PVr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eFW-wX-yUN" firstAttribute="leading" secondItem="Wap-lz-YaV" secondAttribute="leading" id="4VZ-dB-wIe"/>
+                            <constraint firstItem="eFW-wX-yUN" firstAttribute="top" secondItem="D7G-VF-b7D" secondAttribute="bottom" constant="1" id="EVA-bp-K4B"/>
+                            <constraint firstItem="eFW-wX-yUN" firstAttribute="height" secondItem="D7G-VF-b7D" secondAttribute="height" multiplier="1:10" id="HBQ-Zx-S0H"/>
+                            <constraint firstItem="Wap-lz-YaV" firstAttribute="trailing" secondItem="eFW-wX-yUN" secondAttribute="trailing" id="Ufy-vm-lx3"/>
+                            <constraint firstItem="Wap-lz-YaV" firstAttribute="bottom" secondItem="eFW-wX-yUN" secondAttribute="bottom" id="coB-Dj-mz7"/>
+                            <constraint firstItem="D7G-VF-b7D" firstAttribute="top" secondItem="Wap-lz-YaV" secondAttribute="top" id="jrI-LM-nvs"/>
+                            <constraint firstItem="Wap-lz-YaV" firstAttribute="trailing" secondItem="D7G-VF-b7D" secondAttribute="trailing" id="oyo-hB-YzY"/>
+                            <constraint firstItem="D7G-VF-b7D" firstAttribute="leading" secondItem="Wap-lz-YaV" secondAttribute="leading" id="zH6-Jy-WvE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Wap-lz-YaV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="WeU-9U-uYO"/>
+                    <tabBarItem key="tabBarItem" title="HeartPath" id="WeU-9U-uYO"/>
+                    <connections>
+                        <outlet property="dotView" destination="D7G-VF-b7D" id="HxZ-Wh-tDN"/>
+                        <outlet property="viewDotButton" destination="jka-Lj-dG2" id="IdH-1z-rjV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQf-gJ-ipm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
