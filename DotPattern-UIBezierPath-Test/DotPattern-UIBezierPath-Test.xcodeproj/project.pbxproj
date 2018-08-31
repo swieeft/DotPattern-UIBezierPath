@@ -14,6 +14,10 @@
 		24B287642138CD5E0062AE3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B287622138CD5E0062AE3A /* LaunchScreen.storyboard */; };
 		24B2876F2138CD5F0062AE3A /* DotPattern_UIBezierPath_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2876E2138CD5F0062AE3A /* DotPattern_UIBezierPath_TestTests.swift */; };
 		24B2877A2138CD5F0062AE3A /* DotPattern_UIBezierPath_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287792138CD5F0062AE3A /* DotPattern_UIBezierPath_TestUITests.swift */; };
+		24B287962138DC4A0062AE3A /* DotPattern_UIBezierPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B287932138DC3A0062AE3A /* DotPattern_UIBezierPath.framework */; };
+		24B287972138DC4A0062AE3A /* DotPattern_UIBezierPath.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24B287932138DC3A0062AE3A /* DotPattern_UIBezierPath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24B2879C2138E58E0062AE3A /* ViewDotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */; };
+		24B2879E2138FA940062AE3A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879D2138FA940062AE3A /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +35,42 @@
 			remoteGlobalIDString = 24B287552138CD5D0062AE3A;
 			remoteInfo = "DotPattern-UIBezierPath-Test";
 		};
+		24B287922138DC3A0062AE3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24B287332138CC970062AE3A;
+			remoteInfo = "DotPattern-UIBezierPath";
+		};
+		24B287942138DC3A0062AE3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24B2873C2138CC970062AE3A;
+			remoteInfo = "DotPattern-UIBezierPathTests";
+		};
+		24B287982138DC4A0062AE3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 24B287322138CC970062AE3A;
+			remoteInfo = "DotPattern-UIBezierPath";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		24B2879A2138DC4A0062AE3A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24B287972138DC4A0062AE3A /* DotPattern_UIBezierPath.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		24B287562138CD5D0062AE3A /* DotPattern-UIBezierPath-Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DotPattern-UIBezierPath-Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +86,9 @@
 		24B287752138CD5F0062AE3A /* DotPattern-UIBezierPath-TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DotPattern-UIBezierPath-TestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B287792138CD5F0062AE3A /* DotPattern_UIBezierPath_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPattern_UIBezierPath_TestUITests.swift; sourceTree = "<group>"; };
 		24B2877B2138CD5F0062AE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "DotPattern-UIBezierPath.xcodeproj"; path = "../DotPattern-UIBezierPath/DotPattern-UIBezierPath.xcodeproj"; sourceTree = "<group>"; };
+		24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDotViewController.swift; sourceTree = "<group>"; };
+		24B2879D2138FA940062AE3A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B287962138DC4A0062AE3A /* DotPattern_UIBezierPath.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +124,7 @@
 				24B2876D2138CD5F0062AE3A /* DotPattern-UIBezierPath-TestTests */,
 				24B287782138CD5F0062AE3A /* DotPattern-UIBezierPath-TestUITests */,
 				24B287572138CD5D0062AE3A /* Products */,
+				24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +147,8 @@
 				24B287602138CD5E0062AE3A /* Assets.xcassets */,
 				24B287622138CD5E0062AE3A /* LaunchScreen.storyboard */,
 				24B287652138CD5E0062AE3A /* Info.plist */,
+				24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */,
+				24B2879D2138FA940062AE3A /* TabBarViewController.swift */,
 			);
 			path = "DotPattern-UIBezierPath-Test";
 			sourceTree = "<group>";
@@ -125,6 +171,15 @@
 			path = "DotPattern-UIBezierPath-TestUITests";
 			sourceTree = "<group>";
 		};
+		24B2878E2138DC3A0062AE3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24B287932138DC3A0062AE3A /* DotPattern_UIBezierPath.framework */,
+				24B287952138DC3A0062AE3A /* DotPattern-UIBezierPathTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +190,12 @@
 				24B287522138CD5D0062AE3A /* Sources */,
 				24B287532138CD5D0062AE3A /* Frameworks */,
 				24B287542138CD5D0062AE3A /* Resources */,
+				24B2879A2138DC4A0062AE3A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				24B287992138DC4A0062AE3A /* PBXTargetDependency */,
 			);
 			name = "DotPattern-UIBezierPath-Test";
 			productName = "DotPattern-UIBezierPath-Test";
@@ -215,6 +272,12 @@
 			mainGroup = 24B2874D2138CD5D0062AE3A;
 			productRefGroup = 24B287572138CD5D0062AE3A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 24B2878E2138DC3A0062AE3A /* Products */;
+					ProjectRef = 24B2878D2138DC3A0062AE3A /* DotPattern-UIBezierPath.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				24B287552138CD5D0062AE3A /* DotPattern-UIBezierPath-Test */,
@@ -223,6 +286,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		24B287932138DC3A0062AE3A /* DotPattern_UIBezierPath.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DotPattern_UIBezierPath.framework;
+			remoteRef = 24B287922138DC3A0062AE3A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		24B287952138DC3A0062AE3A /* DotPattern-UIBezierPathTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DotPattern-UIBezierPathTests.xctest";
+			remoteRef = 24B287942138DC3A0062AE3A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		24B287542138CD5D0062AE3A /* Resources */ = {
@@ -256,6 +336,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B2879E2138FA940062AE3A /* TabBarViewController.swift in Sources */,
+				24B2879C2138E58E0062AE3A /* ViewDotViewController.swift in Sources */,
 				24B2875C2138CD5D0062AE3A /* ViewController.swift in Sources */,
 				24B2875A2138CD5D0062AE3A /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +371,11 @@
 			isa = PBXTargetDependency;
 			target = 24B287552138CD5D0062AE3A /* DotPattern-UIBezierPath-Test */;
 			targetProxy = 24B287762138CD5F0062AE3A /* PBXContainerItemProxy */;
+		};
+		24B287992138DC4A0062AE3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "DotPattern-UIBezierPath";
+			targetProxy = 24B287982138DC4A0062AE3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,6 +516,7 @@
 		24B2877F2138CD5F0062AE3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "DotPattern-UIBezierPath-Test/Info.plist";
@@ -446,6 +534,7 @@
 		24B287802138CD5F0062AE3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "DotPattern-UIBezierPath-Test/Info.plist";

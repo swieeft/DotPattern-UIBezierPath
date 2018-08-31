@@ -18,10 +18,50 @@ struct Dot: Hashable {
     }
 }
 
-class DotPattern {
-    private var dotPoints:[Dot:CGPoint] = [:]
+public class DotPattern {
+    private var view:UIView
+    private var dotPoints:[Dot:CGPoint]
+    private var layer:CAShapeLayer
     
-    func setDot(view:UIView, row:Int, col:Int) {
+    public init(view: UIView) {
+        self.view = view
+        self.dotPoints = [:]
+        
+        self.layer = CAShapeLayer()
+        layer.strokeEnd = 1
+        layer.strokeColor = UIColor.black.cgColor
+        layer.lineWidth = 1
+        layer.fillColor = UIColor.clear.cgColor
+        
+        view.layer.addSublayer(self.layer)
+    }
+    
+    public init(view: UIView, row: Int, col: Int) {
+        self.view = view
+        
+        self.layer = CAShapeLayer()
+        layer.strokeEnd = 1
+        layer.strokeColor = UIColor.black.cgColor
+        layer.lineWidth = 1
+        layer.fillColor = UIColor.clear.cgColor
+        
+        self.dotPoints = [:]
+        setDot(row: row, col: col)
+        
+        view.layer.addSublayer(self.layer)
+    }
+    
+    public init(view: UIView, layer:CAShapeLayer, row: Int, col: Int) {
+        self.view = view
+        self.layer = layer
+        
+        self.dotPoints = [:]
+        setDot(row: row, col: col)
+        
+        view.layer.addSublayer(self.layer)
+    }
+    
+    public func setDot(row:Int, col:Int) {
         
         let rowSize = view.frame.height / CGFloat(row)
         let colSize = view.frame.width / CGFloat(col)
@@ -45,7 +85,7 @@ class DotPattern {
         }
     }
     
-    func viewDot(view:UIView, layer:CAShapeLayer)  {
+    public func viewDot()  {
         let path = UIBezierPath()
         
         for point in dotPoints {
@@ -53,10 +93,11 @@ class DotPattern {
                 .line(to: CGPoint(x: point.value.x, y: point.value.y + 2))
         }
         
-        view.layer.addSublayer(layer)
+        self.layer.path = path.cgPath
+        self.layer.isHidden = false
     }
     
-    func viewDot(view:UIView, layer:CAShapeLayer, rowRange: CountableClosedRange<Int>, colRange: CountableClosedRange<Int>)  {
+    public func viewDot(rowRange: CountableClosedRange<Int>, colRange: CountableClosedRange<Int>)  {
         let path = UIBezierPath()
         
         for i in rowRange {
@@ -70,10 +111,15 @@ class DotPattern {
             }
         }
         
-        view.layer.addSublayer(layer)
+        self.layer.path = path.cgPath
+        self.layer.isHidden = false
     }
     
-    func isEmpty(row: Int, col: Int) -> Bool {
+    public func hiddenDot() {
+        self.layer.isHidden = true
+    }
+    
+    public func isEmpty(row: Int, col: Int) -> Bool {
         let key = Dot(row: row, col: col)
         
         if let _ = dotPoints[key] {
@@ -83,7 +129,7 @@ class DotPattern {
         return true
     }
     
-    func get(_ row: Int, _ col: Int) -> CGPoint {
+    public func get(_ row: Int, _ col: Int) -> CGPoint {
         let key = Dot(row: row, col: col)
         
         if let point = dotPoints[key] {
