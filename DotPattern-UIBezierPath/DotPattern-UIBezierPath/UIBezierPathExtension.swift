@@ -30,7 +30,7 @@ public extension UIBezierPath {
     }
     
     @discardableResult
-    public func carve(to point: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) -> Self {
+    public func curve(to point: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) -> Self {
         addCurve(to: point, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         return self
     }
