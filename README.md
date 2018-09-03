@@ -19,43 +19,51 @@ UIBezierPath도 포인트가 아닌 점으로 이어 진다면 좀 더 수월하
 하얀 도화지에 아무것도 없이 임의의 점을 찾는 것이 아닌 눈에 보이는 점을 이어 만드는 
 DotPattern-UIBezierPath를 사용하여 여러분만의 멋진 그림을 그려보세요!
 
+## 2. 사용법
+* **선택한 뷰에 DotPattern 생성**
+  * view : UIBezierPath가 적용된 layer를 추가할 view
+  * layer : 사용자가 설정한 값으로 생성 될 UIBezierPath를 적용할 layer(생략가능)
+  * row : view의 row 개수
+  * col : view의 column 개수
+  * row와 col은 (view의 크기 / 개수)로 하여 간격이 결정됩니다.
+```swift 
+public init(view: UIView, layer:CAShapeLayer, row: Int, col: Int)
+(ex. var dotPattern:DotPattern = DotPattern(view: myView, layer: myLayer row: 40, col: 20))
+```
 
+* **DotPattern 보기**
+  * rowRange : 보고자 하는 row의 범위(생략가능)
+  * colRange : 보고자 하는 column의 범위(생략가능)
+  * rowRange, colRange 모두 생략 시 전체 범위의 DotPattern을 보여줍니다.
+```swift
+public func viewDot(rowRange: CountableClosedRange<Int>, colRange: CountableClosedRange<Int>)
+(ex. dotPattern.viewDot(rowRange: 5...10, colRange: 1...15))
+```
 
-### 2. 사용법
-> * 선택한 뷰에 DotPattern 생성
->   * view : UIBezierPath가 적용된 layer를 추가할 view
->   * layer : 사용자가 설정한 값으로 생성 될 UIBezierPath를 적용할 layer(생략가능)
->   * row : view의 row 개수
->   * col : view의 column 개수
->   * row와 col은 (view의 크기 / 개수)로 하여 간격이 결정됩니다.
-> <pre><code>public init(view: UIView, layer:CAShapeLayer, row: Int, col: Int)
-> (ex. var dotPattern:DotPattern = DotPattern(view: myView, layer: myLayer row: 40, col: 20))</code></pre>
->
-> * DotPattern 보기
->   * rowRange : 보고자 하는 row의 범위(생략가능)
->   * colRange : 보고자 하는 column의 범위(생략가능)
->   * rowRange, colRange 모두 생략 시 전체 범위의 DotPattern을 보여줍니다.
-> <pre><code>public func viewDot(rowRange: CountableClosedRange<Int>, colRange: CountableClosedRange<Int>)
-> (ex. dotPattern.viewDot(rowRange: 5...10, colRange: 1...15))</code></pre>
->
-> * DotPattern 숨기기
-> <pre><code>public func hiddenDot()</code></pre>
->
-> * 유효한 위치의 점인지 확인 
->   * row : row 번호
->   * col : column 번호
->   * return : true -> 존재하지 않음, false -> 존재함
-> <pre><code>public func isEmpty(row: Int, col: Int) -> Bool
-> (ex. row: 10, col: 5
->     dotPattern.isEmpty(row: 15, col: 4) -> true
->     dotPattern.isEmpty(row: 5, col: 3) -> false </code></pre>
->
-> * 선택한 위치의 Point 가져오기
->   * row : row 번호
->   * col : column 번호
->   * return : 선택한 위치의 CGPoint
-> <pre><code>public func get(_ row: Int, _ col: Int) -> CGPoint
-> (ex. dotPattern.get(10, 5) -> CGPoint(x : 200, y: 100))</code></pre>
+* **DotPattern 숨기기**
+```swift
+public func hiddenDot()
+```
+
+* **유효한 위치의 점인지 확인**
+  * row : row 번호
+  * col : column 번호
+  * return : true -> 존재하지 않음, false -> 존재함
+```swift 
+public func isEmpty(row: Int, col: Int) -> Bool
+(ex. row: 10, col: 5
+    dotPattern.isEmpty(row: 15, col: 4) -> true
+    dotPattern.isEmpty(row: 5, col: 3) -> false
+```
+
+* **선택한 위치의 Point 가져오기**
+  * row : row 번호
+  * col : column 번호
+  * return : 선택한 위치의 CGPoint
+```swift 
+public func get(_ row: Int, _ col: Int) -> CGPoint
+(ex. dotPattern.get(10, 5) -> CGPoint(x : 200, y: 100))
+```
 
 * * *
 
