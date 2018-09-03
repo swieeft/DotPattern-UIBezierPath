@@ -19,6 +19,7 @@ UIBezierPath도 포인트가 아닌 점으로 이어 진다면 좀 더 수월하
 하얀 도화지에 아무것도 없이 임의의 점을 찾는 것이 아닌 눈에 보이는 점을 이어 만드는 
 DotPattern-UIBezierPath를 사용하여 여러분만의 멋진 그림을 그려보세요!
 
+
 ## 2. 사용법
 * **선택한 뷰에 DotPattern 생성**
   * view : UIBezierPath가 적용된 layer를 추가할 view
@@ -65,138 +66,146 @@ public func get(_ row: Int, _ col: Int) -> CGPoint
 (ex. dotPattern.get(10, 5) -> CGPoint(x : 200, y: 100))
 ```
 
-* * *
 
-### 3. 확장기능
-> DotPattern-UIBezierPath에서는 UIBezierPath를 확장하여 UIBezierPath의 함수를 체이닝으로 사용 할 수 있게끔 하였습니다.
-> * Move : m(to: CGPoint)
->   * to : path가 이동 할 포인트
-> <pre><code>public func m(to point: CGPoint) -> Self</code></pre>
->
-> * Line : line(to: CGPoint)
->   * to : 선을 이어줄 다음 포인트
-> <pre><code>public func line(to point: CGPoint) -> Self</code></pre>
->
-> * Carve : carve(to: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint)
->   * to : 곡선을 이어줄 다음 포인트
->   * controlPoint1 : 곡선을 만들어 주기 위한 첫번째 기준 포인트
->   * controlPoint2 : 곡선을 만들어 주기 위한 두번째 기준 포인트
-> <pre><code>public func carve(to point: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) -> Self</code></pre>
->
-> * QuadCurve : quadCurve(to: CGPoint, controlPoint: CGPoint)
->   * to : 곡선을 이어줄 다음 포인트
->   * controlPoint : 곡선을 만들어 주기 위한 기준 포인트
-> <pre><code>public func quadCurve(to point: CGPoint, controlPoint: CGPoint) -> Self</code></pre>
->
-> * Arc : arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, clockwise: Bool)
->   * center : 원의 중심점
->   * radius : 원의 반지름
->   * start : 원을 그릴 때 시작할 위치 Angel
->   * end : 원을 그릴때 종료 될 위치 Angel
->   * clockwise : 원이 그려지는 방향 (시계방향/반시계방향)
-> <pre><code>public func arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, clockwise: Bool) -> Self</code></pre>
+## 3. 확장기능
+DotPattern-UIBezierPath에서는 UIBezierPath를 확장하여 UIBezierPath의 함수를 체이닝으로 사용 할 수 있게끔 하였습니다.
 
-* * *
+* **Move : m(to: CGPoint)**
+  * to : path가 이동 할 포인트
+```swift 
+public func m(to point: CGPoint) -> Self
+```
+
+* **Line : line(to: CGPoint)**
+  * to : 선을 이어줄 다음 포인트
+```swift 
+public func line(to point: CGPoint) -> Self
+```
+
+* **Carve : carve(to: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint)**
+  * to : 곡선을 이어줄 다음 포인트
+  * controlPoint1 : 곡선을 만들어 주기 위한 첫번째 기준 포인트
+  * controlPoint2 : 곡선을 만들어 주기 위한 두번째 기준 포인트
+```swift 
+public func carve(to point: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) -> Self
+```
+
+* **QuadCurve : quadCurve(to: CGPoint, controlPoint: CGPoint)**
+  * to : 곡선을 이어줄 다음 포인트
+  * controlPoint : 곡선을 만들어 주기 위한 기준 포인트
+```swift 
+public func quadCurve(to point: CGPoint, controlPoint: CGPoint) -> Self
+```
+
+* **Arc : arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, clockwise: Bool)**
+  * center : 원의 중심점
+  * radius : 원의 반지름
+  * start : 원을 그릴 때 시작할 위치 Angel
+  * end : 원을 그릴때 종료 될 위치 Angel
+  * clockwise : 원이 그려지는 방향 (시계방향/반시계방향)
+```swift 
+public func arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, clockwise: Bool) -> Self
+```
+
 
 ### 4. 예제소스
-> * 하트 그리기
-> <pre><code> class HeartViewController: UIViewController {
->
->   @IBOutlet weak var dotView: UIView!
->    
->   @IBOutlet weak var viewDotButton: UIButton!
->
->    var dotPattern:DotPattern!
->    
->    override func viewDidLoad() {
->        super.viewDidLoad()
->    }
->    
->    override func viewDidAppear(_ animated: Bool) {
->        super.viewDidAppear(animated)
->        
->        self.dotPattern = DotPattern(view: self.dotView, row: 20, col: 11)
->    }
->    
->    @IBAction func ViewDotAction(_ sender: UIButton) {
->        if let title = sender.title(for: .normal) {
->            if title == "View Dot" {
->                self.dotPattern.viewDot()
->                sender.setTitle("Hide Dot", for: .normal)
->            } else {
->                self.dotPattern.hiddenDot()
->                sender.setTitle("View Dot", for: .normal)
->            }
->        }
->    }
->    
->    @IBAction func ShowHeartAction(_ sender: Any) {
->        let path = UIBezierPath()
->        
->        path.m(to: getPoint(10, 6))
->            .curve(to: getPoint(10, 3), controlPoint1: getPoint(8, 5), controlPoint2: getPoint(8, 3))
->            .curve(to: getPoint(14, 6), controlPoint1: getPoint(11, 3), controlPoint2: getPoint(13, 5))
->            .curve(to: getPoint(10, 9), controlPoint1: getPoint(13, 7), controlPoint2: getPoint(11, 9))
->            .curve(to: getPoint(10, 6), controlPoint1: getPoint(8, 9), controlPoint2: getPoint(8, 7))
->        
->        let layer = CAShapeLayer()
->        layer.path = path.cgPath
->        layer.strokeEnd = 0
->        layer.strokeColor = UIColor.black.cgColor
->        layer.lineWidth = 3
->        layer.fillColor = UIColor.clear.cgColor
->        
->        let animation = setAnimation()
->        layer.add(animation, forKey: "ani")
->        
->        self.dotView.layer.addSublayer(layer)
->    }
->    
->    func setAnimation() -> CAAnimationGroup {
->        let duration: TimeInterval = 5
->        
->        let animation = CABasicAnimation(keyPath: "strokeEnd")
->        animation.toValue = 1
->        animation.duration = duration
->        animation.fillMode = kCAFillModeForwards
->        animation.repeatCount = .infinity
->        animation.isRemovedOnCompletion = false
->        
->        let animation2 = CABasicAnimation(keyPath: "fillColor")
->        animation2.fromValue = UIColor.clear.cgColor
->        animation2.toValue = UIColor.red.cgColor
->        animation2.duration = duration
->        animation2.fillMode = kCAFillModeForwards
->        animation2.repeatCount = .infinity
->        animation2.isRemovedOnCompletion = false
->        
->        let group = CAAnimationGroup()
->        group.animations = [animation, animation2]
->        group.duration = duration
->        group.fillMode = kCAFillModeForwards
->        group.repeatCount = .infinity
->        group.isRemovedOnCompletion = false
->        
->        return group
->    }
->    
->    func getPoint(_ row: Int, _ col: Int) -> CGPoint {
->        return self.dotPattern.get(row, col)
->    }
->    
->    override func didReceiveMemoryWarning() {
->        super.didReceiveMemoryWarning()
->        // Dispose of any resources that can be recreated.
->    }
->}</code></pre>
-> ![HeartExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
+* **하트 그리기**
+```swift
+class HeartViewController: UIViewController {
 
-* * *
+   @IBOutlet weak var dotView: UIView!
+    
+   @IBOutlet weak var viewDotButton: UIButton!
 
-### 5. 설치방법
-> 준비중입니다...
+    var dotPattern:DotPattern!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.dotPattern = DotPattern(view: self.dotView, row: 20, col: 11)
+    }
+    
+    @IBAction func ViewDotAction(_ sender: UIButton) {
+        if let title = sender.title(for: .normal) {
+            if title == "View Dot" {
+                self.dotPattern.viewDot()
+                sender.setTitle("Hide Dot", for: .normal)
+            } else {
+                self.dotPattern.hiddenDot()
+                sender.setTitle("View Dot", for: .normal)
+            }
+        }
+    }
+    
+    @IBAction func ShowHeartAction(_ sender: Any) {
+        let path = UIBezierPath()
+        
+        path.m(to: getPoint(10, 6))
+            .curve(to: getPoint(10, 3), controlPoint1: getPoint(8, 5), controlPoint2: getPoint(8, 3))
+            .curve(to: getPoint(14, 6), controlPoint1: getPoint(11, 3), controlPoint2: getPoint(13, 5))
+            .curve(to: getPoint(10, 9), controlPoint1: getPoint(13, 7), controlPoint2: getPoint(11, 9))
+            .curve(to: getPoint(10, 6), controlPoint1: getPoint(8, 9), controlPoint2: getPoint(8, 7))
+        
+        let layer = CAShapeLayer()
+        layer.path = path.cgPath
+        layer.strokeEnd = 0
+        layer.strokeColor = UIColor.black.cgColor
+        layer.lineWidth = 3
+        layer.fillColor = UIColor.clear.cgColor
+        
+        let animation = setAnimation()
+        layer.add(animation, forKey: "ani")
+        
+        self.dotView.layer.addSublayer(layer)
+    }
+    
+    func setAnimation() -> CAAnimationGroup {
+        let duration: TimeInterval = 5
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = 1
+        animation.duration = duration
+        animation.fillMode = kCAFillModeForwards
+        animation.repeatCount = .infinity
+        animation.isRemovedOnCompletion = false
+        
+        let animation2 = CABasicAnimation(keyPath: "fillColor")
+        animation2.fromValue = UIColor.clear.cgColor
+        animation2.toValue = UIColor.red.cgColor
+        animation2.duration = duration
+        animation2.fillMode = kCAFillModeForwards
+        animation2.repeatCount = .infinity
+        animation2.isRemovedOnCompletion = false
+        
+        let group = CAAnimationGroup()
+        group.animations = [animation, animation2]
+        group.duration = duration
+        group.fillMode = kCAFillModeForwards
+        group.repeatCount = .infinity
+        group.isRemovedOnCompletion = false
+        
+        return group
+    }
+    
+    func getPoint(_ row: Int, _ col: Int) -> CGPoint {
+        return self.dotPattern.get(row, col)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+```
+![HeartExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
 
-* * *
 
-### 6. 라이센스 
-    위 라이브러리는 MIT 라이센스를 사용합니다.
+## 5. 설치방법
+준비중입니다...
+
+
+## 6. 라이센스 
+위 라이브러리는 MIT 라이센스를 사용합니다.
