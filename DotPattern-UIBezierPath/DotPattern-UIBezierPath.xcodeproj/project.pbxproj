@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24AE27B4214205D5000F3E3C /* JSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AE27B3214205D5000F3E3C /* JSONData.swift */; };
 		24B2873D2138CC970062AE3A /* DotPattern_UIBezierPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B287332138CC970062AE3A /* DotPattern_UIBezierPath.framework */; };
 		24B287422138CC970062AE3A /* DotPattern_UIBezierPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287412138CC970062AE3A /* DotPattern_UIBezierPathTests.swift */; };
 		24B287442138CC970062AE3A /* DotPattern_UIBezierPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 24B287362138CC970062AE3A /* DotPattern_UIBezierPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24AE27B3214205D5000F3E3C /* JSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONData.swift; sourceTree = "<group>"; };
 		24B287332138CC970062AE3A /* DotPattern_UIBezierPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotPattern_UIBezierPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B287362138CC970062AE3A /* DotPattern_UIBezierPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DotPattern_UIBezierPath.h; sourceTree = "<group>"; };
 		24B287372138CC970062AE3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				24B287372138CC970062AE3A /* Info.plist */,
 				24B287892138CEF10062AE3A /* DotPattern.swift */,
 				24B2878B2138D9B70062AE3A /* UIBezierPathExtension.swift */,
+				24AE27B3214205D5000F3E3C /* JSONData.swift */,
 			);
 			path = "DotPattern-UIBezierPath";
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				24B2878A2138CEF10062AE3A /* DotPattern.swift in Sources */,
 				24B2878C2138D9B70062AE3A /* UIBezierPathExtension.swift in Sources */,
+				24AE27B4214205D5000F3E3C /* JSONData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@
 		24B2879C2138E58E0062AE3A /* ViewDotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */; };
 		24B2879E2138FA940062AE3A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879D2138FA940062AE3A /* TabBarViewController.swift */; };
 		24B287A02138FFBF0062AE3A /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B2879F2138FFBF0062AE3A /* HeartViewController.swift */; };
+		24B287EA213CFEF30062AE3A /* FishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B287E9213CFEF30062AE3A /* FishViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDotViewController.swift; sourceTree = "<group>"; };
 		24B2879D2138FA940062AE3A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		24B2879F2138FFBF0062AE3A /* HeartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
+		24B287E9213CFEF30062AE3A /* FishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				24B2879D2138FA940062AE3A /* TabBarViewController.swift */,
 				24B2879B2138E58E0062AE3A /* ViewDotViewController.swift */,
 				24B2879F2138FFBF0062AE3A /* HeartViewController.swift */,
+				24B287E9213CFEF30062AE3A /* FishViewController.swift */,
 			);
 			path = "DotPattern-UIBezierPath-Test";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B287EA213CFEF30062AE3A /* FishViewController.swift in Sources */,
 				24B2879E2138FA940062AE3A /* TabBarViewController.swift in Sources */,
 				24B2879C2138E58E0062AE3A /* ViewDotViewController.swift in Sources */,
 				24B2875C2138CD5D0062AE3A /* ViewController.swift in Sources */,
