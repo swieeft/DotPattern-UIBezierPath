@@ -19,6 +19,7 @@ UIBezierPath도 포인트가 아닌 점으로 이어 진다면 좀 더 수월하
 하얀 도화지에 아무것도 없이 임의의 점을 찾는 것이 아닌 눈에 보이는 점을 이어 만드는 
 DotPattern-UIBezierPath를 사용하여 여러분만의 멋진 그림을 그려보세요!
 
+![FishExample | 20%](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/FishExample.gif)
 
 ## 2. 사용법
 * **선택한 뷰에 DotPattern 생성**
@@ -201,7 +202,6 @@ class HeartViewController: UIViewController {
     }
 ```
 ![HeartExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
-
 
 ## 5. 설치방법
 준비중입니다...
