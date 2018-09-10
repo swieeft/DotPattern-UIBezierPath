@@ -17,6 +17,8 @@ class FishViewController: UIViewController {
     
     var dotPattern:DotPattern!
     
+    var strokeEnd:CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -43,6 +45,7 @@ class FishViewController: UIViewController {
         drawingBody()
         drawingEye()
         drawingFin()
+        drawingPattern()
         drawingBubble()
     }
     
@@ -67,12 +70,12 @@ class FishViewController: UIViewController {
         
         let layer = CAShapeLayer()
         layer.path = path.cgPath
-        layer.strokeEnd = 0
+        layer.strokeEnd = strokeEnd
         layer.strokeColor = UIColor.black.cgColor
-        layer.lineWidth = 1.5
+        layer.lineWidth = 3
         layer.fillColor = UIColor.clear.cgColor
         
-        let animation = setAnimation()
+        let animation = setAnimation(order: 0)
         layer.add(animation, forKey: "ani")
         
         self.dotView.layer.addSublayer(layer)
@@ -86,12 +89,12 @@ class FishViewController: UIViewController {
         
         let layer = CAShapeLayer()
         layer.path = path.cgPath
-        layer.strokeEnd = 0
+        layer.strokeEnd = strokeEnd
         layer.strokeColor = UIColor.black.cgColor
-        layer.lineWidth = 1.5
+        layer.lineWidth = 3
         layer.fillColor = UIColor.clear.cgColor
         
-        let animation = setAnimation()
+        let animation = setAnimation(order: 1)
         layer.add(animation, forKey: "ani")
         
         self.dotView.layer.addSublayer(layer)
@@ -103,9 +106,9 @@ class FishViewController: UIViewController {
         
         let layer2 = CAShapeLayer()
         layer2.path = path2.cgPath
-        layer2.strokeEnd = 0
+        layer2.strokeEnd = strokeEnd
         layer2.strokeColor = UIColor.black.cgColor
-        layer2.lineWidth = 1.5
+        layer2.lineWidth = 3
         layer2.fillColor = UIColor.black.cgColor
         
         self.dotView.layer.addSublayer(layer2)
@@ -125,12 +128,35 @@ class FishViewController: UIViewController {
         
         let layer = CAShapeLayer()
         layer.path = path.cgPath
-        layer.strokeEnd = 0
+        layer.strokeEnd = strokeEnd
         layer.strokeColor = UIColor.black.cgColor
-        layer.lineWidth = 1.5
+        layer.lineWidth = 3
         layer.fillColor = UIColor.clear.cgColor
         
-        let animation = setAnimation()
+        let animation = setAnimation(order: 2)
+        layer.add(animation, forKey: "ani")
+        
+        self.dotView.layer.addSublayer(layer)
+    }
+    
+    func drawingPattern() {
+        let path = UIBezierPath()
+
+        path.m(to: getPoint(14, 21))
+            .quadCurve(to: getPoint(26, 21), controlPoint: getPoint(22, 24))
+            .quadCurve(to: CGPoint(x: getPoint(14, 28).x, y: getPoint(14, 28).y + (self.dotPattern.colSize / 1.5)), controlPoint: getPoint(22, 31))
+            .m(to: getPoint(15, 30))
+            .quadCurve(to: getPoint(24, 30), controlPoint: getPoint(20, 33))
+            .quadCurve(to: getPoint(17, 35), controlPoint: getPoint(21, 36))
+        
+        let layer = CAShapeLayer()
+        layer.path = path.cgPath
+        layer.strokeEnd = strokeEnd
+        layer.strokeColor = UIColor.black.cgColor
+        layer.lineWidth = 3
+        layer.fillColor = UIColor.clear.cgColor
+        
+        let animation = setAnimation(order: 3)
         layer.add(animation, forKey: "ani")
         
         self.dotView.layer.addSublayer(layer)
@@ -154,45 +180,28 @@ class FishViewController: UIViewController {
         
         let layer = CAShapeLayer()
         layer.path = path.cgPath
-        layer.strokeEnd = 0
+        layer.strokeEnd = strokeEnd
         layer.strokeColor = UIColor.black.cgColor
-        layer.lineWidth = 1.5
-        layer.fillColor = UIColor.cyan.cgColor
+        layer.lineWidth = 3
+        layer.fillColor = UIColor.clear.cgColor
         
-        let animation = setAnimation()
+        let animation = setAnimation(order: 4)
         layer.add(animation, forKey: "ani")
         
         self.dotView.layer.addSublayer(layer)
     }
     
-    func setAnimation() -> CABasicAnimation {
+    func setAnimation(order:Int) -> CABasicAnimation {
         let duration: TimeInterval = 3
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
+        animation.beginTime = duration * TimeInterval(order)
         animation.duration = duration
         animation.fillMode = kCAFillModeForwards
-//        animation.repeatCount = .infinity
         animation.isRemovedOnCompletion = false
         
         return animation
-        
-//        let animation2 = CABasicAnimation(keyPath: "fillColor")
-//        animation2.fromValue = UIColor.clear.cgColor
-//        animation2.toValue = UIColor.red.cgColor
-//        animation2.duration = duration
-//        animation2.fillMode = kCAFillModeForwards
-//        animation2.repeatCount = .infinity
-//        animation2.isRemovedOnCompletion = false
-//
-//        let group = CAAnimationGroup()
-//        group.animations = [animation, animation2]
-//        group.duration = duration
-//        group.fillMode = kCAFillModeForwards
-//        group.repeatCount = .infinity
-//        group.isRemovedOnCompletion = false
-        
-//        return group
     }
     
     func getPoint(_ row: Int, _ col: Int) -> CGPoint {

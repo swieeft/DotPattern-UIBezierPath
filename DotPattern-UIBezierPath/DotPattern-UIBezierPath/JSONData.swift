@@ -8,29 +8,38 @@
 
 import Foundation
 
-struct JSONData:Decodable {
+public struct JSONData:Decodable {
     var width:CGFloat?
     var height:CGFloat?
     var row:Int?
     var col:Int?
-    var layers:[dotPatternLayer]?
+    var layers:[Layer]?
     
-    struct dotPatternLayer:Decodable {
-        var path:[dotPatternPath]?
+    public struct Layer:Decodable {
+        var datas:[Data]?
         
-        struct dotPatternPath:Decodable {
+        public struct Data:Decodable {
             var type:String?
-            var point:dotPatternPoint?
-            var controlPoint1:dotPatternPoint?
-            var controlPoint2:dotPatternPoint?
-            var radius:CGFloat?
-            var startAngle:CGFloat?
-            var endAngle:CGFloat?
-            var clockwise:Bool?
+            var startPoint:Point?
+            var endPoint:Point?
+            var curve:Curve?
+            var arc:Arc?
             
-            struct dotPatternPoint:Decodable {
+            public struct Point:Decodable {
                 var x:Int?
                 var y:Int?
+            }
+            
+            public struct Curve:Decodable {
+                var controlPoint1:Point?
+                var controlPoint2:Point?
+            }
+            
+            public struct Arc:Decodable {
+                var radius:CGFloat?
+                var startAngle:CGFloat?
+                var endAngle:CGFloat?
+                var clockwise:Bool?
             }
         }
     }

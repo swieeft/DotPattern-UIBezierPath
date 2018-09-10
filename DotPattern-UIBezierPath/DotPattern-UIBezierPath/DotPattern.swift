@@ -153,6 +153,14 @@ public class DotPattern {
         return CGPoint(x: 0, y: 0)
     }
     
+    public func get(point:JSONData.Layer.Data.Point) -> CGPoint {
+        guard let row = point.x, let col = point.y else {
+            return CGPoint(x: 0, y: 0)
+        }
+        
+        return get(row, col)
+    }
+    
     public func createPath(url: String) {
         getData(url: url) { (data, success) in
             if success {
@@ -163,18 +171,18 @@ public class DotPattern {
                 self.setDot(row: row, col: col)
                 
                 if let layers = data.layers {
-                    for layerPathData in layers {
-                        let bezierPath = self.getPath(layerPathData: layerPathData)
+                    for layer in layers {
+                        let bezierPath = self.getPath(layer: layer)
                         
                         if bezierPath.isEmpty == false {
-                            let layer = CAShapeLayer()
-                            layer.path = bezierPath.cgPath
-                            layer.strokeEnd = 1
-                            layer.strokeColor = UIColor.black.cgColor
-                            layer.lineWidth = 3
-                            layer.fillColor = UIColor.clear.cgColor
+                            let shapeLayer = CAShapeLayer()
+                            shapeLayer.path = bezierPath.cgPath
+                            shapeLayer.strokeEnd = 1
+                            shapeLayer.strokeColor = UIColor.black.cgColor
+                            shapeLayer.lineWidth = 3
+                            shapeLayer.fillColor = UIColor.clear.cgColor
                             
-                            self.view.layer.addSublayer(layer)
+                            self.view.layer.addSublayer(shapeLayer)
                         }
                     }
                 }
@@ -182,43 +190,135 @@ public class DotPattern {
         }
     }
     
-    func getPath(layerPathData:JSONData.dotPatternLayer) ->  UIBezierPath {
+    func getPath(layer:JSONData.Layer) ->  UIBezierPath {
         let bezierPath = UIBezierPath()
         
-        if let paths = layerPathData.path {
-            for path in paths {
-                if let type = path.type {
-                    switch type {
-                    case "move" :
-                        if let point = path.point, let row = point.x, let col = point.y {
-                            bezierPath.m(to: self.get(row, col))
-                        }
-                    case "curve" :
-                        if let point = path.point, let cp1 = path.controlPoint1, let cp2 = path.controlPoint2 {
-                            if let pRow = point.x, let pCol = point.y, let cp1Row = cp1.x, let cp1Col = cp1.y, let cp2Row = cp2.x, let cp2Col = cp2.y {
-                                bezierPath.curve(to: self.get(pRow, pCol), controlPoint1: self.get(cp1Row, cp1Col), controlPoint2: self.get(cp2Row, cp2Col))
-                            }
-                        }
-                    case "quadCurve" :
-                        if let point = path.point, let cp = path.controlPoint1 {
-                            if let pRow = point.x, let pCol = point.y, let cpRow = cp.x, let cpCol = cp.y {
-                                bezierPath.quadCurve(to: self.get(pRow, pCol), controlPoint: self.get(cpRow, cpCol))
-                            }
-                        }
-                    case "arc" :
-                        if let point = path.point, let radius = path.radius, let start = path.startAngle, let end = path.endAngle, let clockwise = path.clockwise {
-                            if let row = point.x, let col = point.y {
-                                bezierPath.arc(center: self.get(row, col), radius: radius, start: start, end: end, clockwise: clockwise)
-                            }
-                        }
-                    default :
-                        break
-                    }
+        guard let datas = layer.datas else {
+            return bezierPath
+        }
+        
+        for data in datas {
+            guard let type = data.type else {
+                continue
+            }
+            
+            switch type {
+            case "line":
+                if let path = createLine(data: data, currentPoint: bezierPath.currentPoint) {
+                    bezierPath.append(path)
                 }
+            case "curve":
+                if let path = createCurve(data: data, currentPoint: bezierPath.currentPoint) {
+                    bezierPath.append(path)
+                }
+            case "quadCurve":
+                if let path = createQuadCurve(data: data, currentPoint: bezierPath.currentPoint) {
+                    bezierPath.append(path)
+                }
+            case "arc":
+                if let path = createArc(data: data, currentPoint: bezierPath.currentPoint) {
+                    bezierPath.append(path)
+                }
+            default:
+                break
             }
         }
         
         return bezierPath
+    }
+    
+    func createLine(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+        
+        let path:UIBezierPath = UIBezierPath()
+        
+        guard let startPoint = data.startPoint, let endPoint = data.endPoint else {
+            return nil
+        }
+        
+        let start = get(point: startPoint)
+        let end = get(point: endPoint)
+        
+        if start == currentPoint {
+            path.line(to: end)
+        } else {
+            path.m(to: start)
+                .line(to: end)
+        }
+        
+        return path
+    }
+    
+    func createCurve(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+        
+        let path:UIBezierPath = UIBezierPath()
+        
+        guard let startPoint = data.startPoint, let endPoint = data.endPoint, let curve = data.curve else {
+            return nil
+        }
+        
+        guard let controlPoint1 = curve.controlPoint1, let controlPoint2 = curve.controlPoint2 else {
+            return nil
+        }
+        
+        let start = get(point: startPoint)
+        let end = get(point: endPoint)
+        let control1 = get(point: controlPoint1)
+        let control2 = get(point: controlPoint2)
+        
+        if start == currentPoint {
+            path.curve(to: end, controlPoint1: control1, controlPoint2: control2)
+        } else {
+            path.m(to: start)
+                .curve(to: end, controlPoint1: control1, controlPoint2: control2)
+        }
+        
+        return path
+    }
+    
+    func createQuadCurve(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+        
+        let path:UIBezierPath = UIBezierPath()
+        
+        guard let startPoint = data.startPoint, let endPoint = data.endPoint, let curve = data.curve else {
+            return nil
+        }
+        
+        guard let controlPoint = curve.controlPoint1 else {
+            return nil
+        }
+        
+        let start = get(point: startPoint)
+        let end = get(point: endPoint)
+        let control = get(point: controlPoint)
+        
+        if start == currentPoint {
+            path.quadCurve(to: end, controlPoint: control)
+        } else {
+            path.m(to: start)
+                .quadCurve(to: end, controlPoint: control)
+        }
+        
+        return path
+    }
+    
+    func createArc(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+        
+        let path:UIBezierPath = UIBezierPath()
+        
+        guard let centerPoint = data.startPoint, let arc = data.arc else {
+            return nil
+        }
+        
+        guard let radius = arc.radius, let start = arc.startAngle, let end = arc.endAngle, let clockwise = arc.clockwise else {
+            return nil
+        }
+        
+        let center = get(point: centerPoint)
+        
+        path.m(to: CGPoint(x: center.x + radius, y: center.y))
+            .arc(center: center, radius: radius, start: start, end: end, clockwise: clockwise)
+        
+        return path
     }
     
     func getData(url urlStr:String, completion: @escaping (_ data:JSONData, _ success:Bool) -> Void) {
