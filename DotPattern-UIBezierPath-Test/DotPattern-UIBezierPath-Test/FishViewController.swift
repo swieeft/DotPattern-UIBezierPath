@@ -148,6 +148,10 @@ class FishViewController: UIViewController {
             .m(to: getPoint(15, 30))
             .quadCurve(to: getPoint(24, 30), controlPoint: getPoint(20, 33))
             .quadCurve(to: getPoint(17, 35), controlPoint: getPoint(21, 36))
+            .m(to: getPoint(14, 20))
+            .quadCurve(to: getPoint(11, 22), controlPoint: getPoint(12, 20))
+            .m(to: getPoint(14, 24))
+            .quadCurve(to: getPoint(12, 25), controlPoint: getPoint(13, 24))
         
         let layer = CAShapeLayer()
         layer.path = path.cgPath
@@ -196,7 +200,7 @@ class FishViewController: UIViewController {
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 1
-        animation.beginTime = duration * TimeInterval(order)
+//        animation.beginTime = duration * TimeInterval(order)
         animation.duration = duration
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
