@@ -190,7 +190,32 @@ public class DotPattern {
         }
     }
     
-    func getPath(layer:JSONData.Layer) ->  UIBezierPath {
+    private func getData(url urlStr:String, completion: @escaping (_ data:JSONData, _ success:Bool) -> Void) {
+        let url = URL(string: urlStr)
+        
+        let request = URLRequest(url: url!, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalCacheData)
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+            guard let data = data else { return }
+            
+            var jsonData:JSONData = JSONData()
+            
+            do {
+                jsonData = try JSONDecoder().decode(JSONData.self, from: data)
+                
+            } catch {
+                print("error: \(error)")
+                completion(jsonData, false)
+            }
+            
+            DispatchQueue.main.async(execute: {
+                completion(jsonData, true)
+            })
+        });
+        task.resume()
+    }
+    
+    private func getPath(layer:JSONData.Layer) ->  UIBezierPath {
         let bezierPath = UIBezierPath()
         
         guard let datas = layer.datas else {
@@ -227,7 +252,7 @@ public class DotPattern {
         return bezierPath
     }
     
-    func createLine(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+    private func createLine(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
         
         let path:UIBezierPath = UIBezierPath()
         
@@ -248,7 +273,7 @@ public class DotPattern {
         return path
     }
     
-    func createCurve(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+    private func createCurve(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
         
         let path:UIBezierPath = UIBezierPath()
         
@@ -275,7 +300,7 @@ public class DotPattern {
         return path
     }
     
-    func createQuadCurve(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+    private func createQuadCurve(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
         
         let path:UIBezierPath = UIBezierPath()
         
@@ -301,7 +326,7 @@ public class DotPattern {
         return path
     }
     
-    func createArc(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
+    private func createArc(data: JSONData.Layer.Data, currentPoint:CGPoint) -> UIBezierPath? {
         
         let path:UIBezierPath = UIBezierPath()
         
@@ -319,31 +344,6 @@ public class DotPattern {
             .arc(center: center, radius: radius, start: start, end: end, clockwise: clockwise)
         
         return path
-    }
-    
-    func getData(url urlStr:String, completion: @escaping (_ data:JSONData, _ success:Bool) -> Void) {
-        let url = URL(string: urlStr)
-        
-        let request = URLRequest(url: url!, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalCacheData)
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            guard let data = data else { return }
-            
-            var jsonData:JSONData = JSONData()
-            
-            do {
-                jsonData = try JSONDecoder().decode(JSONData.self, from: data)
-                
-            } catch {
-                print("error: \(error)")
-                completion(jsonData, false)
-            }
-            
-            DispatchQueue.main.async(execute: {
-                completion(jsonData, true)
-            })
-        });
-        task.resume()
     }
 }
 
