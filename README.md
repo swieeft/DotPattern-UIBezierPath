@@ -127,6 +127,7 @@ self.dotPattern.createPath(url: "https://raw.githubusercontent.com/swieeft/DotPa
             // your source code
         }
 ```
+![HelloDotExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HelloDot.gif)
 
 ## 4. 확장기능
 DotPattern-UIBezierPath에서는 UIBezierPath를 확장하여 UIBezierPath의 함수를 체이닝으로 사용 할 수 있게끔 하였습니다.
