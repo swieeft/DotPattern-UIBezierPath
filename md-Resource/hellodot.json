@@ -3,7 +3,7 @@
   "height":543.0,
   "row":50,
   "col":50,
-  "layer":[{
+  "layers":[{
       "datas":[{
         "type":"quadCurve",
         "startPoint":{
