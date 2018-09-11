@@ -1,0 +1,27 @@
+{
+  "wdith":375.0,
+  "height":543.0,
+  "row":50,
+  "col":50,
+  "layer":[{
+      "datas":[{
+        "type":"quadCurve",
+        "startPoint":{
+          "x":4,
+          "y":3
+        },
+        "endPoint":{
+          "x":12,
+          "y":13
+        },
+        "curve":{
+          "controlPoint1":{
+            "x":0,
+            "y":23
+          },
+          "controlPoint2":null
+        },
+        "arc":null
+      }]
+  }]
+}
