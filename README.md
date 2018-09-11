@@ -117,7 +117,15 @@ public struct JSONData:Decodable {
 * **URL로 JSON 데이터를 받아와 그리기**
   * ulr : JSON 데이터를 받아올 url 
 ```swift 
-public func createPath(url: String)
+public func createPath(url: String, completion: @escaping (_ paths:[UIBezierPath], _ success:Bool) -> Void)
+```
+
+* **JSON 데이터 예제코드**
+  * [JSON 데이터 예제 링크](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/hellodot.json, "json link")
+```swift
+self.dotPattern.createPath(url: "https://raw.githubusercontent.com/swieeft/DotPattern-UIBezierPath/master/md-Resource/hellodot.json") { (paths, success) in
+            // your source code
+        }
 ```
 
 ## 4. 확장기능
