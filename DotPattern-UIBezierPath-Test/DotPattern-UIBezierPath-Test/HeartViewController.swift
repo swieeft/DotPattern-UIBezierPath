@@ -24,8 +24,7 @@ class HeartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        self.dotPattern = DotPattern(view: self.dotView, row: 20, col: 11)
-        self.dotPattern = DotPattern(view: self.dotView)
+        self.dotPattern = DotPattern(view: self.dotView, row: 20, col: 11)
     }
     
     @IBAction func ViewDotAction(_ sender: UIButton) {
@@ -41,26 +40,25 @@ class HeartViewController: UIViewController {
     }
     
     @IBAction func ShowHeartAction(_ sender: Any) {
-        self.dotPattern.createPath(url: "https://raw.githubusercontent.com/swieeft/JSON/master/heart.json")
-//        let path = UIBezierPath()
-//
-//        path.m(to: getPoint(10, 6))
-//            .curve(to: getPoint(10, 3), controlPoint1: getPoint(8, 5), controlPoint2: getPoint(8, 3))
-//            .curve(to: getPoint(14, 6), controlPoint1: getPoint(11, 3), controlPoint2: getPoint(13, 5))
-//            .curve(to: getPoint(10, 9), controlPoint1: getPoint(13, 7), controlPoint2: getPoint(11, 9))
-//            .curve(to: getPoint(10, 6), controlPoint1: getPoint(8, 9), controlPoint2: getPoint(8, 7))
-//
-//        let layer = CAShapeLayer()
-//        layer.path = path.cgPath
-//        layer.strokeEnd = 0
-//        layer.strokeColor = UIColor.black.cgColor
-//        layer.lineWidth = 3
-//        layer.fillColor = UIColor.red.cgColor
-//
-////        let animation = setAnimation()
-////        layer.add(animation, forKey: "ani")
-//
-//        self.dotView.layer.addSublayer(layer)
+        let path = UIBezierPath()
+
+        path.m(to: getPoint(10, 6))
+            .curve(to: getPoint(10, 3), controlPoint1: getPoint(8, 5), controlPoint2: getPoint(8, 3))
+            .curve(to: getPoint(14, 6), controlPoint1: getPoint(11, 3), controlPoint2: getPoint(13, 5))
+            .curve(to: getPoint(10, 9), controlPoint1: getPoint(13, 7), controlPoint2: getPoint(11, 9))
+            .curve(to: getPoint(10, 6), controlPoint1: getPoint(8, 9), controlPoint2: getPoint(8, 7))
+
+        let layer = CAShapeLayer()
+        layer.path = path.cgPath
+        layer.strokeEnd = 0
+        layer.strokeColor = UIColor.black.cgColor
+        layer.lineWidth = 3
+        layer.fillColor = UIColor.red.cgColor
+
+        let animation = setAnimation()
+        layer.add(animation, forKey: "ani")
+
+        self.dotView.layer.addSublayer(layer)
     }
     
     func setAnimation() -> CAAnimationGroup {

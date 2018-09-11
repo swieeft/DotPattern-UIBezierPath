@@ -161,10 +161,14 @@ public class DotPattern {
         return get(row, col)
     }
     
-    public func createPath(url: String) {
+    public func createPath(url: String, completion: @escaping (_ paths:[UIBezierPath], _ success:Bool) -> Void) {
         getData(url: url) { (data, success) in
             if success {
+                
+                var paths:[UIBezierPath] = []
+                
                 guard let row = data.row, let col = data.col else {
+                    completion(paths, false)
                     return
                 }
                 
@@ -175,15 +179,30 @@ public class DotPattern {
                         let bezierPath = self.getPath(layer: layer)
                         
                         if bezierPath.isEmpty == false {
-                            let shapeLayer = CAShapeLayer()
-                            shapeLayer.path = bezierPath.cgPath
-                            shapeLayer.strokeEnd = 1
-                            shapeLayer.strokeColor = UIColor.black.cgColor
-                            shapeLayer.lineWidth = 3
-                            shapeLayer.fillColor = UIColor.clear.cgColor
-                            
-                            self.view.layer.addSublayer(shapeLayer)
+                            paths.append(bezierPath)
                         }
+                        
+                        completion(paths, true)
+//                        if bezierPath.isEmpty == false {
+//                            let shapeLayer = CAShapeLayer()
+//                            shapeLayer.path = bezierPath.cgPath
+//                            shapeLayer.strokeEnd = 0
+//                            shapeLayer.strokeColor = UIColor.black.cgColor
+//                            shapeLayer.lineWidth = 3
+//                            shapeLayer.fillColor = UIColor.clear.cgColor
+//
+//                            let duration: TimeInterval = 3
+//
+//                            let animation = CABasicAnimation(keyPath: "strokeEnd")
+//                            animation.toValue = 1
+//                            animation.duration = duration
+//                            animation.fillMode = kCAFillModeForwards
+//                            animation.isRemovedOnCompletion = false
+//
+//                            shapeLayer.add(animation, forKey: "ani")
+//
+//                            self.view.layer.addSublayer(shapeLayer)
+//                        }
                     }
                 }
             }
@@ -317,7 +336,8 @@ public class DotPattern {
         let control = get(point: controlPoint)
         
         if start == currentPoint {
-            path.quadCurve(to: end, controlPoint: control)
+            path.m(to: start)
+                .quadCurve(to: end, controlPoint: control)
         } else {
             path.m(to: start)
                 .quadCurve(to: end, controlPoint: control)
