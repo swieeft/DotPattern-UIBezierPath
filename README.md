@@ -3,7 +3,7 @@
 DotPattern-UIBezierPath
 =======================
 
-## 1. 왜 DotPattern-UIBezierPath인가?
+## 1. DotPattern을 왜 만들게 되었을까요?
 UIBezierPath를 처음 접하게 되었을 때 새로운 세상을 본 것 같이 신기하였습니다. 
 단순히 코드 만으로 퀄리티 있는 그림을 그린다? 지금까지 상상도 못했던 이야기였습니다.
 그렇게 UIBezierPath를 사용해보기 시작했습니다.
@@ -67,8 +67,60 @@ public func get(_ row: Int, _ col: Int) -> CGPoint
 (ex. dotPattern.get(10, 5) -> CGPoint(x : 200, y: 100))
 ```
 
+## 3. JSON을 이용한 사용법
+DotPattern-UIBezierPath는 코드로만 작업 할 수 있도록 하는 것이 아닌 JSON 형식을 제공하여 Path의 재사용성을 높이고, 서버에서 Path 데이터를 내려주어 좀 더 유연하게 UIBezierPath를 활용하여 작업 할 수 있도록 지원하고 있습니다.
 
-## 3. 확장기능
+* **JSON 형식**
+```swift
+public struct JSONData:Decodable {
+    var width:CGFloat?  // view의 넓이 값
+    var height:CGFloat? // view의 높이 값
+    var row:Int?        // view의 행 개수
+    var col:Int?        // view의 열 개수
+    var layers:[Layer]? // view에 추가 될 layer 정보
+    
+    public struct Layer:Decodable {
+        var datas:[Data]?   // layer의 path data array
+        
+        // path data
+        public struct Data:Decodable {
+            var type:String?        // path의 종류 (line, curve, arc 등)
+            var startPoint:Point?   // path의 시작 점
+            var endPoint:Point?     // path의 종료 점
+            var curve:Curve?        // curve 타입일 때의 curve 정보
+            var arc:Arc?            // arc 타입일 때의 arc 정보
+            
+            // path의 각 점에 대한 정보
+            public struct Point:Decodable {
+                var x:Int?
+                var y:Int?
+            }
+            
+            // curve 정보
+            public struct Curve:Decodable {
+                var controlPoint1:Point?
+                var controlPoint2:Point?
+            }
+            
+            // arc 정보
+            public struct Arc:Decodable {
+                var radius:CGFloat?     // 원의 반지름
+                var startAngle:CGFloat? // 원의 시작 각도
+                var endAngle:CGFloat?   // 원의 종료 각도
+                var clockwise:Bool?     // 원이 그려지는 방향 (true:시게, false:반시계)
+            }
+        }
+    }
+}
+```
+
+* **URL로 JSON 데이터를 받아와 그리기**
+  * ulr : JSON 데이터를 받아올 url 
+```swift 
+public func createPath(url: String)
+```
+
+## 4. 확장기능
 DotPattern-UIBezierPath에서는 UIBezierPath를 확장하여 UIBezierPath의 함수를 체이닝으로 사용 할 수 있게끔 하였습니다.
 
 * **Move : m(to: CGPoint)**
@@ -109,7 +161,7 @@ public func arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, 
 ```
 
 
-### 4. 예제소스
+### 5. 예제소스
 * **하트 그리기**
 ```swift
 class HeartViewController: UIViewController {
@@ -203,9 +255,9 @@ class HeartViewController: UIViewController {
 ```
 ![HeartExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
 
-## 5. 설치방법
+## 6. 설치방법
 준비중입니다...
 
 
-## 6. 라이센스 
-위 라이브러리는 MIT 라이센스를 사용합니다.
+## 7. 라이센스 
+DotPattern-UIBezierPath는 MIT 라이센스를 사용합니다.
