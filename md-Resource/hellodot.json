@@ -66,6 +66,25 @@
       {
         "type":"quadCurve",
         "startPoint":{
+          "x":5,
+          "y":19
+        },
+        "endPoint":{
+          "x":25,
+          "y":19
+        },
+        "curve":{
+          "controlPoint1":{
+            "x":10,
+            "y":13
+          },
+          "controlPoint2":null
+        },
+        "arc":null
+      },
+      {
+        "type":"quadCurve",
+        "startPoint":{
           "x":3,
           "y":28
         },
