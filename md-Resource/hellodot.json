@@ -199,25 +199,6 @@
       {
         "type":"quadCurve",
         "startPoint":{
-          "x":24,
-          "y":29
-        },
-        "endPoint":{
-          "x":23,
-          "y":36
-        },
-        "curve":{
-          "controlPoint1":{
-            "x":21,
-            "y":33
-          },
-          "controlPoint2":null
-        },
-        "arc":null
-      },
-      {
-        "type":"quadCurve",
-        "startPoint":{
           "x":3,
           "y":37
         },
