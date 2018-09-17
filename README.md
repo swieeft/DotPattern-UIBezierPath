@@ -129,7 +129,16 @@ self.dotPattern.createPath(url: "https://raw.githubusercontent.com/swieeft/DotPa
 ```
 ![HelloDotExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HelloDot.gif)
 
-## 4. 확장기능
+## 4. Dot Editor
+DotPattern-UIBezierPath를 더욱 쉽게 사용하기 위해서는 어떻게 해야 할지 고민하다 생각한 방법은 Dot-Editor입니다. 
+
+우리가 포토샵이나 스케치 등의 이미지 작업 프로그램에서 이미지 파일을 작업하고 저장하여 App에서 사용하듯이 DotPattern-UIBezierPath는 Dot-Editor에서 Path를 작업하고 저장(JSON Data)하여 App에서 사용하도록 지원합니다.
+
+Dot-Editor로 인해 하나하나 포인트를 찾아가며 작업을 해야했던 불편한 과정이 사라지고 더욱 쉽게, 누구나 원하는 Path를 그릴 수 있게 되었습니다.
+
+* Dot Editor Link : [Dot Editor](https://kingcjy.github.io/Dot-Editor/)
+
+## 5. 확장기능
 DotPattern-UIBezierPath에서는 UIBezierPath를 확장하여 UIBezierPath의 함수를 체이닝으로 사용 할 수 있게끔 하였습니다.
 
 * **Move : m(to: CGPoint)**
@@ -170,7 +179,7 @@ public func arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, 
 ```
 
 
-### 5. 예제소스
+### 6. 예제소스
 * **하트 그리기**
 ```swift
 class HeartViewController: UIViewController {
@@ -264,9 +273,9 @@ class HeartViewController: UIViewController {
 ```
 ![HeartExample](https://github.com/swieeft/DotPattern-UIBezierPath/blob/master/md-Resource/HeartExemple.gif)
 
-## 6. 설치방법
+## 7. 설치방법
 준비중입니다...
 
 
-## 7. 라이센스 
+## 8. 라이센스 
 DotPattern-UIBezierPath는 MIT 라이센스를 사용합니다.
