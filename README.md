@@ -137,6 +137,7 @@ DotPattern-UIBezierPath를 더욱 쉽게 사용하기 위해서는 어떻게 해
 Dot-Editor로 인해 하나하나 포인트를 찾아가며 작업을 해야했던 불편한 과정이 사라지고 더욱 쉽게, 누구나 원하는 Path를 그릴 수 있게 되었습니다.
 
 * Dot Editor Link : [Dot Editor](https://kingcjy.github.io/Dot-Editor/)
+* GitHub URL : [GitHub](https://github.com/KingCjy/Dot-Editor)
 
 ## 5. 확장기능
 DotPattern-UIBezierPath에서는 UIBezierPath를 확장하여 UIBezierPath의 함수를 체이닝으로 사용 할 수 있게끔 하였습니다.
